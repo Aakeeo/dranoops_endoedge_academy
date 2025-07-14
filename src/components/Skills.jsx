@@ -1,328 +1,353 @@
-import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { SKILLS_COVERED, PREMIUM_MATERIALS } from '../utils/constants'
-import Card from './ui/Card'
-import Button from './ui/Button'
+import { useEffect } from "react";
+import { motion } from "framer-motion";
+import { SKILLS_COVERED } from "../utils/constants";
+import Card from "./ui/Card";
+import Button from "./ui/Button";
 
 const Skills = () => {
-  const [activeTab, setActiveTab] = useState('skills')
+  useEffect(() => {
+    const handleScroll = () => {
+      const underlineElements = document.querySelectorAll(
+        "#skills .elegant-underline, #skills .elegant-underline-thin"
+      );
 
-  const tabVariants = {
-    inactive: { 
-      opacity: 0.7, 
-      scale: 0.95,
-      backgroundColor: "rgba(255, 255, 255, 0.8)"
-    },
-    active: { 
-      opacity: 1, 
-      scale: 1,
-      backgroundColor: "rgba(218, 165, 32, 0.1)"
-    }
-  }
+      underlineElements.forEach((element) => {
+        const rect = element.getBoundingClientRect();
+        const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
 
-  const contentVariants = {
-    hidden: { opacity: 0, y: 20, scale: 0.95 },
-    visible: { 
-      opacity: 1, 
-      y: 0, 
-      scale: 1,
-      transition: {
-        duration: 0.5,
-        staggerChildren: 0.1
-      }
-    },
-    exit: { opacity: 0, y: -20, scale: 0.95 }
-  }
+        if (isVisible) {
+          element.classList.add("animate");
+        }
+      });
+    };
 
-  const itemVariants = {
-    hidden: { opacity: 0, x: -20 },
-    visible: { opacity: 1, x: 0 }
-  }
+    // Check on mount
+    handleScroll();
+
+    // Check on scroll
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
-    <section id="skills" className="section-padding bg-neutral-50">
+    <section id="skills" className="section-padding bg-white scroll-margin-nav">
       <div className="container-custom">
         {/* Section Header */}
-        <motion.div 
-          className="text-center max-w-3xl mx-auto mb-16"
+        <motion.div
+          className="text-center max-w-4xl mx-auto mb-20"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <motion.h2 
-            className="mb-6"
+          <motion.div
+            className="inline-flex items-center px-4 py-2 bg-amber-50 border border-amber-200 rounded-full text-amber-700 font-medium mb-6"
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            viewport={{ once: true }}
+          >
+            <span className="mr-2">🎯</span>
+            Clinical Excellence
+          </motion.div>
+
+          <motion.h2
+            className="text-4xl md:text-5xl lg:text-6xl font-['Playfair_Display'] font-bold text-gray-800 mb-6"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            Advanced <span className="text-gradient">Skills & Materials</span>
+            Advanced{" "}
+            <span className="relative inline-block">
+              <span className="text-amber-600">Endodontic Skills</span>
+              <span className="elegant-underline"></span>
+            </span>
           </motion.h2>
-          <motion.p 
-            className="text-xl text-neutral-600 leading-relaxed"
+
+          <motion.p
+            className="text-xl text-gray-600 leading-relaxed font-['Inter']"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
             viewport={{ once: true }}
           >
-            Master cutting-edge endodontic techniques with premium materials and equipment 
-            used by leading practitioners worldwide.
+            Master cutting-edge endodontic techniques through hands-on training
+            with state-of-the-art equipment and personalized mentorship from Dr.
+            Anoop.
           </motion.p>
         </motion.div>
 
-        {/* Tab Navigation */}
-        <motion.div 
-          className="flex justify-center gap-4 mb-12"
-          initial={{ opacity: 0, y: 20 }}
+        {/* Skills Overview */}
+        <motion.div
+          className="mb-16"
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          {[
-            { id: 'skills', label: 'Clinical Skills', icon: '🎯' },
-            { id: 'materials', label: 'Premium Materials', icon: '🔬' }
-          ].map((tab) => (
-            <motion.button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              className={`px-8 py-4 rounded-xl border-2 transition-all duration-300 flex items-center space-x-3 ${
-                activeTab === tab.id 
-                  ? 'border-primary-300 bg-primary-50 shadow-medium' 
-                  : 'border-neutral-200 bg-white hover:border-primary-200 hover:bg-primary-25'
-              }`}
-              variants={tabVariants}
-              animate={activeTab === tab.id ? "active" : "inactive"}
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true }}
             >
-              <span className="text-2xl">{tab.icon}</span>
-              <span className="font-semibold text-lg">{tab.label}</span>
-            </motion.button>
-          ))}
+              <div className="flex items-center mb-6">
+                <div className="w-16 h-16 bg-gradient-to-br from-amber-400 to-amber-600 rounded-2xl flex items-center justify-center mr-4 shadow-lg">
+                  <span className="text-3xl">🎯</span>
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-gray-800 font-['Playfair_Display']">
+                    Clinical Mastery
+                  </h3>
+                  <p className="text-amber-600 font-medium font-['Inter']">
+                    Advanced Endodontic Techniques
+                  </p>
+                </div>
+              </div>
+
+              <p className="text-lg text-gray-700 mb-8 leading-relaxed font-['Inter']">
+                Our comprehensive training program covers every aspect of modern
+                endodontics, from basic procedures to complex surgical
+                interventions. You'll master both traditional techniques and the
+                latest innovations in the field.
+              </p>
+
+              <div className="bg-gradient-to-r from-amber-50 to-yellow-50 p-6 rounded-2xl border border-amber-100">
+                <h4 className="font-semibold text-gray-800 mb-4 font-['Playfair_Display'] text-lg">
+                  What Makes Our Training Unique
+                </h4>
+                <div className="space-y-3">
+                  <div className="flex items-center text-gray-700 font-['Inter']">
+                    <span className="text-amber-500 mr-3 text-lg">✓</span>
+                    Hands-on practice with real patient cases
+                  </div>
+                  <div className="flex items-center text-gray-700 font-['Inter']">
+                    <span className="text-amber-500 mr-3 text-lg">✓</span>
+                    One-on-one mentorship with Dr. Anoop
+                  </div>
+                  <div className="flex items-center text-gray-700 font-['Inter']">
+                    <span className="text-amber-500 mr-3 text-lg">✓</span>
+                    Latest rotary and reciprocating systems
+                  </div>
+                  <div className="flex items-center text-gray-700 font-['Inter']">
+                    <span className="text-amber-500 mr-3 text-lg">✓</span>
+                    Advanced imaging and diagnosis techniques
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              viewport={{ once: true }}
+              className="relative"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-amber-400/20 to-yellow-400/20 rounded-3xl blur-3xl"></div>
+              <div className="relative bg-white p-8 rounded-2xl shadow-xl border border-gray-100">
+                <div className="text-center mb-6">
+                  <div className="w-20 h-20 bg-gradient-to-br from-amber-400 to-amber-600 rounded-full mx-auto mb-4 flex items-center justify-center shadow-lg">
+                    <span className="text-4xl">🔬</span>
+                  </div>
+                  <h4 className="text-xl font-bold text-gray-800 font-['Playfair_Display']">
+                    Premium Learning Experience
+                  </h4>
+                  <p className="text-gray-600 font-['Inter']">
+                    State-of-the-art equipment and materials
+                  </p>
+                </div>
+
+                <div className="space-y-4">
+                  <div className="flex items-center p-3 bg-gradient-to-r from-amber-50 to-yellow-50 rounded-lg">
+                    <span className="text-2xl mr-3">🏆</span>
+                    <span className="text-gray-700 font-['Inter']">
+                      Industry-leading techniques
+                    </span>
+                  </div>
+                  <div className="flex items-center p-3 bg-gradient-to-r from-amber-50 to-yellow-50 rounded-lg">
+                    <span className="text-2xl mr-3">💎</span>
+                    <span className="text-gray-700 font-['Inter']">
+                      Premium materials training
+                    </span>
+                  </div>
+                  <div className="flex items-center p-3 bg-gradient-to-r from-amber-50 to-yellow-50 rounded-lg">
+                    <span className="text-2xl mr-3">🎓</span>
+                    <span className="text-gray-700 font-['Inter']">
+                      Expert certification
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
         </motion.div>
 
-        {/* Tab Content */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeTab}
-            variants={contentVariants}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-            className="max-w-6xl mx-auto"
-          >
-            {activeTab === 'skills' && (
-              <Card className="p-8 lg:p-12">
-                <div className="grid lg:grid-cols-2 gap-12">
-                  {/* Skills Overview */}
-                  <motion.div variants={itemVariants}>
-                    <div className="flex items-center mb-6">
-                      <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mr-4">
-                        <span className="text-3xl">🎯</span>
-                      </div>
-                      <div>
-                        <h3 className="text-2xl font-bold text-primary-700">Clinical Mastery</h3>
-                        <p className="text-primary-600 font-medium">Advanced Endodontic Skills</p>
-                      </div>
-                    </div>
-                    
-                    <p className="text-lg text-neutral-700 mb-8 leading-relaxed">
-                      Our comprehensive training program covers every aspect of modern endodontics, 
-                      from basic procedures to complex surgical interventions. You'll master both 
-                      traditional techniques and the latest innovations in the field.
-                    </p>
+        {/* Skills Grid */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="mb-16"
+        >
+          <div className="text-center mb-12">
+            <h3 className="text-3xl font-bold text-gray-800 mb-4 font-['Playfair_Display']">
+              Skills You'll{" "}
+              <span className="relative inline-block">
+                <span className="text-amber-600">Master</span>
+                <span className="elegant-underline-thin"></span>
+              </span>
+            </h3>
+            <p className="text-lg text-gray-600 font-['Inter'] max-w-2xl mx-auto">
+              Comprehensive training in advanced endodontic techniques that will
+              transform your clinical practice
+            </p>
+          </div>
 
-                    <div className="bg-gradient-to-r from-primary-50 to-accent-50 p-6 rounded-lg">
-                      <h4 className="font-semibold text-primary-700 mb-3">What Makes Our Training Unique</h4>
-                      <div className="space-y-3">
-                        <div className="flex items-center text-primary-600">
-                          <span className="text-accent-500 mr-2">✓</span>
-                          Hands-on practice with real patient cases
-                        </div>
-                        <div className="flex items-center text-primary-600">
-                          <span className="text-accent-500 mr-2">✓</span>
-                          One-on-one mentorship with Dr. Anoop
-                        </div>
-                        <div className="flex items-center text-primary-600">
-                          <span className="text-accent-500 mr-2">✓</span>
-                          Latest rotary and reciprocating systems
-                        </div>
-                        <div className="flex items-center text-primary-600">
-                          <span className="text-accent-500 mr-2">✓</span>
-                          Advanced imaging and diagnosis techniques
-                        </div>
-                      </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {SKILLS_COVERED.map((skill, index) => (
+              <motion.div
+                key={index}
+                className="group"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                whileHover={{ y: -8 }}
+              >
+                <Card className="p-6 h-full hover:shadow-xl transition-all duration-300 border-0 bg-white group-hover:bg-gradient-to-br group-hover:from-amber-50 group-hover:to-yellow-50">
+                  <div className="flex items-start space-x-4">
+                    <div className="w-12 h-12 bg-gradient-to-br from-amber-400 to-amber-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                      <span className="text-white font-bold text-lg">
+                        {index + 1}
+                      </span>
                     </div>
-                  </motion.div>
-
-                  {/* Skills Grid */}
-                  <motion.div variants={itemVariants}>
-                    <h4 className="text-xl font-semibold text-neutral-800 mb-6">
-                      Skills You'll Master
-                    </h4>
-                    
-                    <div className="grid gap-4">
-                      {SKILLS_COVERED.map((skill, index) => (
-                        <motion.div
-                          key={index}
-                          className="p-4 bg-white rounded-lg border border-neutral-200 hover:border-primary-200 transition-colors"
-                          variants={itemVariants}
-                          whileHover={{ scale: 1.02, backgroundColor: "rgba(218, 165, 32, 0.02)" }}
+                    <div className="flex-1">
+                      <h5 className="font-bold text-gray-800 mb-2 font-['Playfair_Display'] text-lg group-hover:text-amber-700 transition-colors">
+                        {skill.name}
+                      </h5>
+                      <p className="text-gray-600 text-sm leading-relaxed mb-3 font-['Inter']">
+                        {skill.description}
+                      </p>
+                      <div className="flex items-center justify-between">
+                        <span
+                          className={`text-xs px-3 py-1 rounded-full font-medium font-['Inter'] ${
+                            skill.level === "Expert"
+                              ? "bg-red-100 text-red-700"
+                              : skill.level === "Advanced"
+                              ? "bg-amber-100 text-amber-700"
+                              : skill.level === "Premium"
+                              ? "bg-purple-100 text-purple-700"
+                              : "bg-blue-100 text-blue-700"
+                          }`}
                         >
-                          <div className="flex items-start space-x-3">
-                            <div className="w-8 h-8 bg-primary-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                              <span className="text-primary-600 font-semibold text-sm">
-                                {index + 1}
-                              </span>
-                            </div>
-                            <div>
-                              <h5 className="font-semibold text-neutral-800 mb-1">{skill.name}</h5>
-                              <p className="text-neutral-600 text-sm leading-relaxed">{skill.description}</p>
-                              <div className="flex items-center mt-2">
-                                <span className="text-xs bg-primary-100 text-primary-700 px-2 py-1 rounded-full">
-                                  {skill.level}
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-                        </motion.div>
-                      ))}
-                    </div>
-                  </motion.div>
-                </div>
-              </Card>
-            )}
-
-            {activeTab === 'materials' && (
-              <Card className="p-8 lg:p-12">
-                <div className="grid lg:grid-cols-2 gap-12">
-                  {/* Materials Overview */}
-                  <motion.div variants={itemVariants}>
-                    <div className="flex items-center mb-6">
-                      <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mr-4">
-                        <span className="text-3xl">🔬</span>
-                      </div>
-                      <div>
-                        <h3 className="text-2xl font-bold text-primary-700">Premium Equipment</h3>
-                        <p className="text-primary-600 font-medium">Industry-Leading Materials</p>
+                          {skill.level}
+                        </span>
+                        <span className="text-2xl group-hover:scale-125 transition-transform duration-300">
+                          {skill.icon}
+                        </span>
                       </div>
                     </div>
-                    
-                    <p className="text-lg text-neutral-700 mb-8 leading-relaxed">
-                      Train with the same premium materials and equipment used by top endodontists 
-                      worldwide. Our academy invests in the latest technology to ensure you learn 
-                      with industry-standard tools.
-                    </p>
+                  </div>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
 
-                    <div className="bg-gradient-to-r from-accent-50 to-primary-50 p-6 rounded-lg">
-                      <h4 className="font-semibold text-primary-700 mb-3">Investment in Excellence</h4>
-                      <div className="space-y-3">
-                        <div className="flex items-center text-primary-600">
-                          <span className="text-accent-500 mr-2">✓</span>
-                          Latest rotary file systems and motors
-                        </div>
-                        <div className="flex items-center text-primary-600">
-                          <span className="text-accent-500 mr-2">✓</span>
-                          Advanced apex locators and measurement tools
-                        </div>
-                        <div className="flex items-center text-primary-600">
-                          <span className="text-accent-500 mr-2">✓</span>
-                          Premium sealing and obturation materials
-                        </div>
-                        <div className="flex items-center text-primary-600">
-                          <span className="text-accent-500 mr-2">✓</span>
-                          State-of-the-art microscopes and imaging
-                        </div>
-                      </div>
-                    </div>
-                  </motion.div>
-
-                  {/* Materials Grid */}
-                  <motion.div variants={itemVariants}>
-                    <h4 className="text-xl font-semibold text-neutral-800 mb-6">
-                      Premium Materials & Equipment
-                    </h4>
-                    
-                    <div className="grid gap-4">
-                      {PREMIUM_MATERIALS.map((material, index) => (
-                        <motion.div
-                          key={index}
-                          className="p-4 bg-white rounded-lg border border-neutral-200 hover:border-primary-200 transition-colors"
-                          variants={itemVariants}
-                          whileHover={{ scale: 1.02, backgroundColor: "rgba(218, 165, 32, 0.02)" }}
-                        >
-                          <div className="flex items-start space-x-3">
-                            <div className="w-10 h-10 bg-accent-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                              <span className="text-xl">{material.icon}</span>
-                            </div>
-                            <div>
-                              <h5 className="font-semibold text-neutral-800 mb-1">{material.name}</h5>
-                              <p className="text-neutral-600 text-sm leading-relaxed mb-2">{material.description}</p>
-                              <div className="flex items-center space-x-2">
-                                <span className="text-xs bg-accent-100 text-accent-700 px-2 py-1 rounded-full">
-                                  {material.brand}
-                                </span>
-                                <span className="text-xs bg-primary-100 text-primary-700 px-2 py-1 rounded-full">
-                                  {material.category}
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-                        </motion.div>
-                      ))}
-                    </div>
-                  </motion.div>
-                </div>
-              </Card>
-            )}
-          </motion.div>
-        </AnimatePresence>
-
-        {/* Skills CTA */}
-        <motion.div 
+        {/* Premium CTA */}
+        <motion.div
           className="mt-16 text-center"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <Card className="p-8 bg-gradient-to-r from-accent-600 to-primary-600 text-white">
-            <h3 className="text-3xl font-bold mb-4">
-              Master Advanced Endodontics with Premium Tools
-            </h3>
-            <p className="text-xl mb-6 text-blue-100 max-w-3xl mx-auto">
-              Don't settle for basic training. Learn with the same equipment and materials 
-              used by leading endodontists and elevate your practice to new heights.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                variant="secondary"
-                size="lg"
-                className="bg-white text-primary-700 hover:bg-blue-50"
-                onClick={() => {
-                  const element = document.getElementById('contact')
-                  if (element) element.scrollIntoView({ behavior: 'smooth' })
-                }}
-              >
-                Start Your Journey
-              </Button>
-              <Button
-                size="lg"
-                className="bg-yellow-500 hover:bg-yellow-400 text-primary-900 border-0"
-                onClick={() => {
-                  const element = document.getElementById('courses')
-                  if (element) element.scrollIntoView({ behavior: 'smooth' })
-                }}
-              >
-                View Course Details
-              </Button>
-            </div>
-          </Card>
+          <div className="relative">
+            <div className="absolute inset-0 bg-gradient-to-r from-amber-400/20 to-yellow-400/20 rounded-3xl blur-3xl"></div>
+            <Card className="relative p-12 bg-gradient-to-br from-amber-600 via-amber-500 to-yellow-500 text-white border-0 shadow-2xl">
+              <div className="max-w-4xl mx-auto">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                  viewport={{ once: true }}
+                >
+                  <h3 className="text-4xl md:text-5xl font-bold mb-6 font-['Playfair_Display']">
+                    Master Advanced Endodontics
+                  </h3>
+                  <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-3xl mx-auto font-['Inter'] leading-relaxed">
+                    Don't settle for basic training. Learn with industry-leading
+                    techniques and equipment that will elevate your practice to
+                    new heights.
+                  </p>
+                </motion.div>
+
+                <motion.div
+                  className="flex flex-col sm:flex-row gap-6 justify-center"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.4 }}
+                  viewport={{ once: true }}
+                >
+                  <Button
+                    variant="secondary"
+                    size="lg"
+                    className="bg-white text-amber-700 hover:bg-gray-50 font-['Inter'] font-semibold px-8 py-4 text-lg shadow-lg border-0 hover:shadow-xl transition-all duration-300"
+                    onClick={() => {
+                      const element = document.getElementById("contact");
+                      if (element)
+                        element.scrollIntoView({ behavior: "smooth" });
+                    }}
+                  >
+                    Start Your Journey
+                  </Button>
+                  <Button
+                    size="lg"
+                    className="bg-gray-900 hover:bg-gray-800 text-white border-0 font-['Inter'] font-semibold px-8 py-4 text-lg shadow-lg hover:shadow-xl transition-all duration-300"
+                    onClick={() => {
+                      const element = document.getElementById("courses");
+                      if (element)
+                        element.scrollIntoView({ behavior: "smooth" });
+                    }}
+                  >
+                    View Course Details
+                  </Button>
+                </motion.div>
+
+                <motion.div
+                  className="mt-8 flex justify-center items-center gap-8 text-white/80"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ duration: 0.6, delay: 0.6 }}
+                  viewport={{ once: true }}
+                >
+                  <div className="flex items-center gap-2">
+                    <span className="text-2xl">🏆</span>
+                    <span className="font-['Inter']">Expert Training</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-2xl">💎</span>
+                    <span className="font-['Inter']">Premium Materials</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-2xl">🎓</span>
+                    <span className="font-['Inter']">Certification</span>
+                  </div>
+                </motion.div>
+              </div>
+            </Card>
+          </div>
         </motion.div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Skills
+export default Skills;
