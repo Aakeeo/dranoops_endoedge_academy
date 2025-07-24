@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { FaLinkedin, FaFacebook, FaInstagram } from "react-icons/fa";
 import Button from "./ui/Button";
 
 const Hero = () => {
@@ -128,6 +129,38 @@ const Hero = () => {
                   transition={{ duration: 0.2 }}
                 />
               </motion.button>
+            </motion.div>
+
+            {/* Social Media Icons - Subtle and elegant */}
+            <motion.div
+              className="flex justify-center lg:justify-start mt-8"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 1.4 }}
+            >
+              <div className="flex items-center space-x-3">
+                {[
+                  { icon: FaLinkedin, href: "https://linkedin.com/in/dr-anoop", label: "LinkedIn" },
+                  { icon: FaFacebook, href: "https://facebook.com/endoedgeacademy", label: "Facebook" },
+                  { icon: FaInstagram, href: "https://instagram.com/endoedgeacademy", label: "Instagram" }
+                ].map((social, index) => (
+                  <motion.a
+                    key={social.label}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-3 rounded-lg transition-all duration-300 text-white/70 hover:text-white bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 hover:border-white/30 shadow-md hover:shadow-lg group transform hover:-translate-y-1"
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    whileTap={{ scale: 0.95 }}
+                    initial={{ opacity: 0, scale: 0.8, y: 20 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: index * 0.1 + 1.8 }}
+                    title={`Follow Dr. Anoop on ${social.label}`}
+                  >
+                    <social.icon className="w-5 h-5 transition-all duration-300 group-hover:scale-110" />
+                  </motion.a>
+                ))}
+              </div>
             </motion.div>
           </div>
 

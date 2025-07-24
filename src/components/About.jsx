@@ -27,7 +27,7 @@ const About = () => {
 
   const whyChooseUs = [
     {
-      title: "Real Patient Experience",
+      title: "Hands On Experience",
       description:
         "Unlike other programs, our students work on actual patients under expert supervision, providing invaluable real-world experience.",
       icon: "🦷",
@@ -35,7 +35,7 @@ const About = () => {
     {
       title: "Small Batch Training",
       description:
-        "Limited to 8-10 students per batch ensuring personalized attention and hands-on learning for every participant.",
+        "Limited to 4-5 students per batch ensuring personalized attention and hands-on learning for every participant.",
       icon: "👥",
     },
     {
@@ -145,7 +145,7 @@ const About = () => {
                 style={{ fontFamily: "Inter, sans-serif" }}
               >
                 <p className="text-lg">
-                  Dr. Anoop is a renowned clinical endodontist with over 15
+                  Dr. Anoop is an eminent clinical endodontist with over 15
                   years of experience in advanced endodontic procedures. His
                   passion for teaching and commitment to clinical excellence has
                   made him a respected figure in the dental community.
@@ -351,8 +351,7 @@ const About = () => {
               className="text-xl text-neutral-600 mb-8 max-w-3xl mx-auto leading-relaxed font-light"
               style={{ fontFamily: "Inter, sans-serif" }}
             >
-              Join hundreds of successful graduates who have elevated their
-              practice with our comprehensive training program.
+              Where passion fuels precision — master the art of endodontics and step confidently into a future of clinical excellence.
             </p>
             <motion.button
               className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-amber-500 to-amber-600 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"

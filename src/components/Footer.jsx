@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { FaLinkedin, FaFacebook, FaInstagram, FaEnvelope, FaPhone, FaMapMarkerAlt } from "react-icons/fa";
 import { CONTACT_INFO } from "../utils/constants";
 
 const Footer = () => {
@@ -65,29 +66,56 @@ const Footer = () => {
               cutting-edge techniques.
             </p>
 
-            {/* Social Links (placeholder) */}
+            {/* Social Links */}
             <div className="flex space-x-4">
-              <motion.div
-                className="w-10 h-10 bg-neutral-800 rounded-full flex items-center justify-center hover:bg-primary-600 transition-colors cursor-pointer"
-                whileHover={{ scale: 1.1 }}
+              {[
+                { icon: FaLinkedin, href: "https://linkedin.com/in/dr-anoop", label: "LinkedIn", color: "hover:bg-blue-600" },
+                { icon: FaFacebook, href: "https://facebook.com/endoedgeacademy", label: "Facebook", color: "hover:bg-blue-700" },
+                { icon: FaInstagram, href: "https://instagram.com/endoedgeacademy", label: "Instagram", color: "hover:bg-pink-600" }
+              ].map((social, index) => (
+                <motion.a
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`w-10 h-10 bg-neutral-800 rounded-full flex items-center justify-center ${social.color} transition-all duration-300 group`}
+                  whileHover={{ scale: 1.1, y: -2 }}
+                  whileTap={{ scale: 0.9 }}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.3, delay: index * 0.1 + 0.8 }}
+                  viewport={{ once: true }}
+                >
+                  <social.icon className="w-5 h-5 text-white group-hover:text-white transition-colors" />
+                </motion.a>
+              ))}
+              
+              {/* Contact Icons */}
+              <motion.a
+                href={`mailto:${CONTACT_INFO.email}`}
+                className="w-10 h-10 bg-neutral-800 rounded-full flex items-center justify-center hover:bg-amber-600 transition-all duration-300 group"
+                whileHover={{ scale: 1.1, y: -2 }}
                 whileTap={{ scale: 0.9 }}
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.3, delay: 1.1 }}
+                viewport={{ once: true }}
               >
-                <span className="text-white">📧</span>
-              </motion.div>
-              <motion.div
-                className="w-10 h-10 bg-neutral-800 rounded-full flex items-center justify-center hover:bg-primary-600 transition-colors cursor-pointer"
-                whileHover={{ scale: 1.1 }}
+                <FaEnvelope className="w-4 h-4 text-white group-hover:text-white transition-colors" />
+              </motion.a>
+              
+              <motion.a
+                href={`tel:${CONTACT_INFO.phone}`}
+                className="w-10 h-10 bg-neutral-800 rounded-full flex items-center justify-center hover:bg-green-600 transition-all duration-300 group"
+                whileHover={{ scale: 1.1, y: -2 }}
                 whileTap={{ scale: 0.9 }}
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.3, delay: 1.2 }}
+                viewport={{ once: true }}
               >
-                <span className="text-white">📞</span>
-              </motion.div>
-              <motion.div
-                className="w-10 h-10 bg-neutral-800 rounded-full flex items-center justify-center hover:bg-primary-600 transition-colors cursor-pointer"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-              >
-                <span className="text-white">📍</span>
-              </motion.div>
+                <FaPhone className="w-4 h-4 text-white group-hover:text-white transition-colors" />
+              </motion.a>
             </div>
           </motion.div>
 

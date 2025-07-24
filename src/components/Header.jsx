@@ -132,6 +132,8 @@ const Header = () => {
             </Button>
           </motion.div>
 
+
+
           {/* Mobile Menu Button */}
           <motion.button
             className={`lg:hidden p-2.5 rounded-xl focus:outline-none transition-all duration-300 ${
@@ -207,6 +209,7 @@ const Header = () => {
                     {item.label}
                   </motion.button>
                 ))}
+                
                 <div className="pt-4">
                   <Button
                     onClick={() => scrollToSection("contact")}
