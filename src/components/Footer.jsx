@@ -1,33 +1,33 @@
-import { motion } from 'framer-motion'
-import { CONTACT_INFO } from '../utils/constants'
+import { motion } from "framer-motion";
+import { CONTACT_INFO } from "../utils/constants";
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear()
+  const currentYear = new Date().getFullYear();
 
   const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId)
+    const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
+      element.scrollIntoView({ behavior: "smooth" });
     }
-  }
+  };
 
   const quickLinks = [
-    { label: 'About Us', id: 'about' },
-    { label: 'Course Modules', id: 'courses' },
-    { label: 'Skills & Materials', id: 'skills' },
-    { label: 'Testimonials', id: 'testimonials' },
-    { label: 'FAQ', id: 'faq' },
-    { label: 'Contact', id: 'contact' }
-  ]
+    { label: "About Us", id: "about" },
+    { label: "Course Modules", id: "courses" },
+    { label: "Skills & Materials", id: "skills" },
+    { label: "Testimonials", id: "testimonials" },
+    { label: "FAQ", id: "faq" },
+    { label: "Contact", id: "contact" },
+  ];
 
   const courseHighlights = [
-    'Rotary Root Canal Treatment',
-    'IPS e.max Restorations',
-    'Zirconia Crown Preparation',
-    'Real Patient Clinical Experience',
-    'Expert Mentorship',
-    'Small Batch Training'
-  ]
+    "Rotary Root Canal Treatment",
+    "IPS e.max Restorations",
+    "Zirconia Crown Preparation",
+    "Real Patient Clinical Experience",
+    "Expert Mentorship",
+    "Small Batch Training",
+  ];
 
   return (
     <footer className="bg-neutral-900 text-white">
@@ -43,21 +43,26 @@ const Footer = () => {
             viewport={{ once: true }}
           >
             <div className="flex items-center space-x-3 mb-6">
-              <img 
-                src="/Logo.png" 
-                alt="Dr Anoop's EndoEdge Academy Logo" 
+              <img
+                src="/Update_logo.png"
+                alt="Dr Anoop's EndoEdge Academy Logo"
                 className="w-16 h-16 object-contain drop-shadow-lg"
-                style={{ imageRendering: 'crisp-edges' }}
+                style={{ imageRendering: "crisp-edges" }}
               />
               <div>
-                <h3 className="text-xl font-bold text-white">Dr Anoop's EndoEdge Academy</h3>
-                <p className="text-neutral-400 text-sm">Clinical Excellence in Endodontics</p>
+                <h3 className="text-xl font-bold text-white">
+                  Dr Anoop's EndoEdge Academy
+                </h3>
+                <p className="text-neutral-400 text-sm">
+                  Clinical Excellence in Endodontics
+                </p>
               </div>
             </div>
-            
+
             <p className="text-neutral-300 leading-relaxed mb-6">
-              Transform your endodontic skills with Dr. Anoop's comprehensive training program. 
-              Real patient experience, expert mentorship, and cutting-edge techniques.
+              Transform your endodontic skills with Dr. Anoop's comprehensive
+              training program. Real patient experience, expert mentorship, and
+              cutting-edge techniques.
             </p>
 
             {/* Social Links (placeholder) */}
@@ -139,17 +144,21 @@ const Footer = () => {
               <div className="flex items-start space-x-3">
                 <span className="text-primary-400 mt-1">📞</span>
                 <div>
-                  <p className="text-neutral-300 text-sm">{CONTACT_INFO.phone}</p>
+                  <p className="text-neutral-300 text-sm">
+                    {CONTACT_INFO.phone}
+                  </p>
                 </div>
               </div>
-              
+
               <div className="flex items-start space-x-3">
                 <span className="text-primary-400 mt-1">✉️</span>
                 <div>
-                  <p className="text-neutral-300 text-sm">{CONTACT_INFO.email}</p>
+                  <p className="text-neutral-300 text-sm">
+                    {CONTACT_INFO.email}
+                  </p>
                 </div>
               </div>
-              
+
               <div className="flex items-start space-x-3">
                 <span className="text-primary-400 mt-1">📍</span>
                 <div>
@@ -158,18 +167,20 @@ const Footer = () => {
                   </p>
                 </div>
               </div>
-              
+
               <div className="flex items-start space-x-3">
                 <span className="text-primary-400 mt-1">🕒</span>
                 <div>
-                  <p className="text-neutral-300 text-sm">{CONTACT_INFO.hours}</p>
+                  <p className="text-neutral-300 text-sm">
+                    {CONTACT_INFO.hours}
+                  </p>
                 </div>
               </div>
             </div>
 
             {/* CTA Button */}
             <motion.button
-              onClick={() => scrollToSection('contact')}
+              onClick={() => scrollToSection("contact")}
               className="mt-6 w-full bg-primary-600 hover:bg-primary-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
@@ -181,7 +192,7 @@ const Footer = () => {
       </div>
 
       {/* Bottom Bar */}
-      <motion.div 
+      <motion.div
         className="border-t border-neutral-800"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -192,13 +203,15 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="text-neutral-400 text-sm text-center md:text-left">
               <p>
-                © {currentYear} Dr Anoop's EndoEdge Academy. All rights reserved.
+                © {currentYear} Dr Anoop's EndoEdge Academy. All rights
+                reserved.
               </p>
               <p className="mt-1">
-                Empowering dental professionals with clinical excellence in endodontics.
+                Empowering dental professionals with clinical excellence in
+                endodontics.
               </p>
             </div>
-            
+
             <div className="flex items-center space-x-6">
               <motion.button
                 className="text-neutral-400 hover:text-primary-400 text-sm transition-colors"
@@ -213,7 +226,7 @@ const Footer = () => {
                 Terms of Service
               </motion.button>
               <motion.button
-                onClick={() => scrollToSection('hero')}
+                onClick={() => scrollToSection("hero")}
                 className="text-neutral-400 hover:text-primary-400 text-sm transition-colors flex items-center space-x-1"
                 whileHover={{ y: -2 }}
               >
@@ -225,7 +238,7 @@ const Footer = () => {
         </div>
       </motion.div>
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

@@ -60,7 +60,7 @@ const Header = () => {
               }`}
             >
               <img
-                src="/NewLogo.png"
+                src="/Update_logo.png"
                 alt="Dr Anoop's EndoEdge Academy Logo"
                 className={`w-28 h-28 md:w-32 md:h-32 lg:w-36 lg:h-36 object-contain transition-all duration-400 filter ${
                   isScrolled
