@@ -6,7 +6,6 @@ import CourseModules from './components/CourseModules'
 import Skills from './components/Skills'
 import Testimonials from './components/Testimonials'
 import Contact from './components/Contact'
-import FAQ from './components/FAQ'
 import Footer from './components/Footer'
 
 function App() {
@@ -41,7 +40,6 @@ function App() {
         <Skills />
         <Testimonials />
         <Contact />
-        <FAQ />
       </main>
       <Footer />
     </div>

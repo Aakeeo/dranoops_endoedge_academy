@@ -27,7 +27,7 @@ const Header = () => {
     { label: "Home", id: "hero" },
     { label: "About", id: "about" },
     { label: "Courses", id: "courses" },
-    { label: "Skills", id: "skills" },
+    { label: "Program Details", id: "skills" },
     { label: "Testimonials", id: "testimonials" },
     { label: "Contact", id: "contact" },
   ];
@@ -132,8 +132,6 @@ const Header = () => {
             </Button>
           </motion.div>
 
-
-
           {/* Mobile Menu Button */}
           <motion.button
             className={`lg:hidden p-2.5 rounded-xl focus:outline-none transition-all duration-300 ${
@@ -209,7 +207,7 @@ const Header = () => {
                     {item.label}
                   </motion.button>
                 ))}
-                
+
                 <div className="pt-4">
                   <Button
                     onClick={() => scrollToSection("contact")}

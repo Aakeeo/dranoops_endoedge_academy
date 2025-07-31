@@ -5,13 +5,14 @@ const About = () => {
   const achievements = [
     {
       icon: "🏆",
-      title: "15+ Years Experience",
-      description: "Extensive clinical expertise in advanced endodontics",
+      title: "10+ Years Experience",
+      description: "Extensive clinical expertise in Advanced Endodontics",
     },
     {
       icon: "🎓",
-      title: "500+ Graduates",
-      description: "Successfully trained dental professionals across India",
+      title: "120+ Graduates",
+      description:
+        "Successfully trained Dental Professionals across India and abroad",
     },
     {
       icon: "🏥",
@@ -41,7 +42,7 @@ const About = () => {
     {
       title: "Latest Technology",
       description:
-        "Train with cutting-edge equipment including rotary systems, apex locators, and premium ceramic materials.",
+        "Train in an environment equipped with the finest tools and materials trusted by leading endodontists worldwide.",
       icon: "⚡",
     },
     {
@@ -88,16 +89,16 @@ const About = () => {
             </span>
           </motion.h2>
           <motion.p
-            className="text-xl text-neutral-600 leading-relaxed font-light max-w-3xl mx-auto"
+            className="text-xl text-neutral-700 leading-relaxed font-medium max-w-3xl mx-auto"
             style={{ fontFamily: "Inter, sans-serif" }}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
             viewport={{ once: true }}
           >
-            Where cutting-edge endodontic expertise meets personalized
-            mentorship. We're not just an academy — we're your gateway to
-            clinical excellence.
+            Blending innovation with mentorship, we go beyond training to shape
+            true Endodontic artists. This is your journey to clinical excellence
+            — guided, personal, and precise.
           </motion.p>
         </motion.div>
 
@@ -116,7 +117,7 @@ const About = () => {
                   <img
                     src="/DrAnoopImage.png"
                     alt="Dr. Anoop - Founder & Chief Mentor"
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-contain"
                   />
                 </div>
                 <div>
@@ -134,7 +135,7 @@ const About = () => {
                   <div className="flex items-center mt-2">
                     <div className="flex text-amber-400">{"★".repeat(5)}</div>
                     <span className="text-neutral-500 text-sm ml-2 font-medium">
-                      15+ Years Excellence
+                      10+ Years Excellence
                     </span>
                   </div>
                 </div>
@@ -145,7 +146,7 @@ const About = () => {
                 style={{ fontFamily: "Inter, sans-serif" }}
               >
                 <p className="text-lg">
-                  Dr. Anoop is an eminent clinical endodontist with over 15
+                  Dr. Anoop is an eminent clinical endodontist with over 10
                   years of experience in advanced endodontic procedures. His
                   passion for teaching and commitment to clinical excellence has
                   made him a respected figure in the dental community.
@@ -184,7 +185,7 @@ const About = () => {
                   <div className="flex items-center p-4 bg-neutral-50 rounded-xl border border-neutral-100 hover:bg-amber-50 hover:border-amber-200 transition-all duration-300">
                     <span className="text-amber-500 mr-3 text-xl">✓</span>
                     <span className="text-neutral-700 font-medium">
-                      Advanced Training in Rotary Endodontics
+                      Microscopic Endodontist
                     </span>
                   </div>
                   <div className="flex items-center p-4 bg-neutral-50 rounded-xl border border-neutral-100 hover:bg-amber-50 hover:border-amber-200 transition-all duration-300">
@@ -196,7 +197,7 @@ const About = () => {
                   <div className="flex items-center p-4 bg-neutral-50 rounded-xl border border-neutral-100 hover:bg-amber-50 hover:border-amber-200 transition-all duration-300">
                     <span className="text-amber-500 mr-3 text-xl">✓</span>
                     <span className="text-neutral-700 font-medium">
-                      Specialist in Aesthetic Restorations
+                      Specialist in Broken Instrument Retrieval
                     </span>
                   </div>
                 </div>
@@ -351,7 +352,8 @@ const About = () => {
               className="text-xl text-neutral-600 mb-8 max-w-3xl mx-auto leading-relaxed font-light"
               style={{ fontFamily: "Inter, sans-serif" }}
             >
-              Where passion fuels precision — master the art of endodontics and step confidently into a future of clinical excellence.
+              Where passion fuels precision — master the art of endodontics and
+              step confidently into a future of clinical excellence.
             </p>
             <motion.button
               className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-amber-500 to-amber-600 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"

@@ -62,13 +62,22 @@ const Hero = () => {
                 ease: [0.25, 0.4, 0.25, 1],
               }}
             >
-              <span className="relative inline-block">
-                Sculpting Precision, Inspiring Excellence
+              <span className="relative inline-block mr-4">
+                Sculpting Precision ,
                 <motion.div
                   className="absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-blue-300 to-white/50 rounded-full"
                   initial={{ width: 0, opacity: 0 }}
                   animate={{ width: "100%", opacity: 1 }}
                   transition={{ duration: 0.8, delay: 1.8, ease: "easeOut" }}
+                />
+              </span>
+              <span className="relative inline-block">
+                Inspiring Excellence
+                <motion.div
+                  className="absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-blue-300 to-white/50 rounded-full"
+                  initial={{ width: 0, opacity: 0 }}
+                  animate={{ width: "100%", opacity: 1 }}
+                  transition={{ duration: 0.8, delay: 2.1, ease: "easeOut" }}
                 />
               </span>
             </motion.h2>
@@ -140,9 +149,21 @@ const Hero = () => {
             >
               <div className="flex items-center space-x-3">
                 {[
-                  { icon: FaLinkedin, href: "https://linkedin.com/in/dr-anoop", label: "LinkedIn" },
-                  { icon: FaFacebook, href: "https://facebook.com/endoedgeacademy", label: "Facebook" },
-                  { icon: FaInstagram, href: "https://instagram.com/endoedgeacademy", label: "Instagram" }
+                  {
+                    icon: FaLinkedin,
+                    href: "https://linkedin.com/in/dr-anoop",
+                    label: "LinkedIn",
+                  },
+                  {
+                    icon: FaFacebook,
+                    href: "https://facebook.com/endoedgeacademy",
+                    label: "Facebook",
+                  },
+                  {
+                    icon: FaInstagram,
+                    href: "https://instagram.com/endoedgeacademy",
+                    label: "Instagram",
+                  },
                 ].map((social, index) => (
                   <motion.a
                     key={social.label}

@@ -515,9 +515,6 @@ const Contact = () => {
                         <p className="text-gray-600 font-['Inter']">
                           {CONTACT_INFO.phone}
                         </p>
-                        <p className="text-sm text-amber-600 font-['Inter']">
-                          Available Mon-Sat, 9 AM - 6 PM
-                        </p>
                       </div>
                     </motion.div>
 

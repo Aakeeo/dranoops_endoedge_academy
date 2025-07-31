@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { motion } from "framer-motion";
-import { SKILLS_COVERED } from "../utils/constants";
 import Card from "./ui/Card";
 import Button from "./ui/Button";
 
@@ -50,8 +49,8 @@ const Skills = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
           >
-            <span className="mr-2">🎯</span>
-            Clinical Excellence
+            <span className="mr-2">📅</span>
+            Program Details
           </motion.div>
 
           <motion.h2
@@ -61,9 +60,9 @@ const Skills = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            Advanced{" "}
+            Course Duration{" "}
             <span className="relative inline-block">
-              <span className="text-amber-600">Endodontic Skills</span>
+              <span className="text-amber-600">& Timing</span>
               <span className="elegant-underline"></span>
             </span>
           </motion.h2>
@@ -75,13 +74,12 @@ const Skills = () => {
             transition={{ duration: 0.6, delay: 0.4 }}
             viewport={{ once: true }}
           >
-            Master cutting-edge endodontic techniques through hands-on training
-            with state-of-the-art equipment and personalized mentorship from Dr.
-            Anoop.
+            Complete program structure, timing, and investment details for your
+            comprehensive endodontic training journey.
           </motion.p>
         </motion.div>
 
-        {/* Skills Overview */}
+        {/* Course Duration & Fee Overview */}
         <motion.div
           className="mb-16"
           initial={{ opacity: 0, y: 30 }}
@@ -90,58 +88,61 @@ const Skills = () => {
           viewport={{ once: true }}
         >
           <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left Column - Duration & Timing */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
+              className="relative"
             >
-              <div className="flex items-center mb-6">
-                <div className="w-16 h-16 bg-gradient-to-br from-amber-400 to-amber-600 rounded-2xl flex items-center justify-center mr-4 shadow-lg">
-                  <span className="text-3xl">🎯</span>
+              <div className="absolute inset-0 bg-gradient-to-br from-amber-400/20 to-blue-400/20 rounded-3xl blur-3xl"></div>
+              <Card className="relative bg-gradient-to-br from-white via-amber-50/30 to-blue-50/30 p-10 rounded-3xl shadow-2xl border-2 border-amber-200/50 backdrop-blur-sm">
+                <div className="flex items-center mb-8">
+                  <div className="w-16 h-16 bg-gradient-to-br from-amber-400 to-amber-600 rounded-2xl flex items-center justify-center mr-4 shadow-lg">
+                    <span className="text-3xl">📅</span>
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-bold text-gray-800 font-['Playfair_Display']">
+                      Course Duration & Timing
+                    </h3>
+                    <p className="text-amber-600 font-medium font-['Inter']">
+                      Comprehensive Training Schedule
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="text-2xl font-bold text-gray-800 font-['Playfair_Display']">
-                    Clinical Mastery
-                  </h3>
-                  <p className="text-amber-600 font-medium font-['Inter']">
-                    Advanced Endodontic Techniques
-                  </p>
-                </div>
-              </div>
 
-              <p className="text-lg text-gray-700 mb-8 leading-relaxed font-['Inter']">
-                Our comprehensive training program covers every aspect of modern
-                endodontics, from basic procedures to complex surgical
-                interventions. You'll master both traditional techniques and the
-                latest innovations in the field.
-              </p>
+                <div className="space-y-6">
+                  <div className="bg-gradient-to-r from-amber-50 to-yellow-50 p-6 rounded-2xl border border-amber-100 shadow-md">
+                    <h4 className="font-bold text-gray-800 mb-4 font-['Playfair_Display'] text-xl">
+                      📚 Total Duration: 4 to 5 Months
+                    </h4>
+                    <div className="space-y-3">
+                      <div className="flex items-center text-gray-700 font-['Inter']">
+                        <span className="text-amber-500 mr-3 text-lg">📖</span>
+                        <span className="font-semibold">Number of Modules:</span>
+                        <span className="ml-2 text-amber-700 font-bold">15</span>
+                      </div>
+                    </div>
+                  </div>
 
-              <div className="bg-gradient-to-r from-amber-50 to-yellow-50 p-6 rounded-2xl border border-amber-100">
-                <h4 className="font-semibold text-gray-800 mb-4 font-['Playfair_Display'] text-lg">
-                  What Makes Our Training Unique
-                </h4>
-                <div className="space-y-3">
-                  <div className="flex items-center text-gray-700 font-['Inter']">
-                    <span className="text-amber-500 mr-3 text-lg">✓</span>
-                    Hands-on practice with real patient cases
-                  </div>
-                  <div className="flex items-center text-gray-700 font-['Inter']">
-                    <span className="text-amber-500 mr-3 text-lg">✓</span>
-                    One-on-one mentorship with Dr. Anoop
-                  </div>
-                  <div className="flex items-center text-gray-700 font-['Inter']">
-                    <span className="text-amber-500 mr-3 text-lg">✓</span>
-                    Latest rotary and reciprocating systems
-                  </div>
-                  <div className="flex items-center text-gray-700 font-['Inter']">
-                    <span className="text-amber-500 mr-3 text-lg">✓</span>
-                    Advanced imaging and diagnosis techniques
+                  <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-2xl border border-blue-100 shadow-md">
+                    <h4 className="font-bold text-gray-800 mb-4 font-['Playfair_Display'] text-xl">
+                      🕐 Timing
+                    </h4>
+                    <div className="space-y-3">
+                      <div className="flex items-center text-gray-700 font-['Inter']">
+                        <span className="text-blue-500 mr-3 text-lg">📆</span>
+                        <span className="font-semibold">Monday to Saturday:</span>
+                        <span className="ml-2 text-blue-700 font-bold">10:00 AM – 2:00 PM</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </Card>
             </motion.div>
 
+            {/* Right Column - Course Fee */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -149,38 +150,61 @@ const Skills = () => {
               viewport={{ once: true }}
               className="relative"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-amber-400/20 to-yellow-400/20 rounded-3xl blur-3xl"></div>
-              <div className="relative bg-white p-8 rounded-2xl shadow-xl border border-gray-100">
+              <div className="absolute inset-0 bg-gradient-to-br from-amber-400/30 to-orange-400/30 rounded-3xl blur-3xl"></div>
+              <div className="relative bg-gradient-to-br from-white via-amber-50/50 to-orange-50/50 p-10 rounded-3xl shadow-2xl border-2 border-amber-200/50 backdrop-blur-sm">
                 <div className="text-center mb-6">
-                  <div className="w-20 h-20 bg-gradient-to-br from-amber-400 to-amber-600 rounded-full mx-auto mb-4 flex items-center justify-center shadow-lg">
-                    <span className="text-4xl">🔬</span>
+                  <div className="w-20 h-20 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full mx-auto mb-4 flex items-center justify-center shadow-lg">
+                    <span className="text-4xl">�</span>
                   </div>
-                  <h4 className="text-xl font-bold text-gray-800 font-['Playfair_Display']">
-                    Premium Learning Experience
+                  <h4 className="text-2xl font-bold text-gray-800 font-['Playfair_Display'] mb-2">
+                    Course Fee
                   </h4>
-                  <p className="text-gray-600 font-['Inter']">
-                    State-of-the-art equipment and materials
-                  </p>
                 </div>
 
-                <div className="space-y-4">
-                  <div className="flex items-center p-3 bg-gradient-to-r from-amber-50 to-yellow-50 rounded-lg">
-                    <span className="text-2xl mr-3">🏆</span>
-                    <span className="text-gray-700 font-['Inter']">
-                      Industry-leading techniques
-                    </span>
+                <div className="text-center space-y-6">
+                  <div className="bg-gradient-to-r from-amber-500 to-orange-500 p-6 rounded-2xl shadow-lg">
+                    <div className="text-5xl md:text-6xl font-bold text-white font-['Playfair_Display'] mb-2 tracking-tight">
+                      ₹2,80,000
+                    </div>
+                    <div className="text-xl text-amber-100 font-['Inter'] font-medium">
+                      Only
+                    </div>
                   </div>
-                  <div className="flex items-center p-3 bg-gradient-to-r from-amber-50 to-yellow-50 rounded-lg">
-                    <span className="text-2xl mr-3">💎</span>
-                    <span className="text-gray-700 font-['Inter']">
-                      Premium materials training
-                    </span>
+                  
+                  <div className="text-lg text-gray-600 font-['Inter'] leading-relaxed font-medium">
+                    (INR Two Lakh Eighty Thousand only)
                   </div>
-                  <div className="flex items-center p-3 bg-gradient-to-r from-amber-50 to-yellow-50 rounded-lg">
-                    <span className="text-2xl mr-3">🎓</span>
-                    <span className="text-gray-700 font-['Inter']">
-                      Expert certification
-                    </span>
+                  
+                  <div className="bg-gradient-to-r from-amber-100 to-orange-100 p-5 rounded-xl border-2 border-amber-200 shadow-inner">
+                    <div className="flex items-center justify-center space-x-2 mb-2">
+                      <span className="text-2xl">💡</span>
+                      <span className="text-amber-800 font-bold font-['Inter'] text-lg">
+                        Complete Package Includes:
+                      </span>
+                    </div>
+                    <div className="space-y-2 text-amber-700 font-medium font-['Inter']">
+                      <div className="flex items-center justify-center space-x-2">
+                        <span className="text-amber-600">✓</span>
+                        <span>All premium materials & equipment</span>
+                      </div>
+                      <div className="flex items-center justify-center space-x-2">
+                        <span className="text-amber-600">✓</span>
+                        <span>Individual working station</span>
+                      </div>
+                      <div className="flex items-center justify-center space-x-2">
+                        <span className="text-amber-600">✓</span>
+                        <span>Study materials & certification</span>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="bg-gradient-to-r from-green-500 to-emerald-500 text-white p-4 rounded-xl shadow-lg">
+                    <div className="text-sm font-bold uppercase tracking-wider mb-1">
+                      🎯 Best Value Investment
+                    </div>
+                    <div className="text-lg font-semibold">
+                      Transform Your Career in 4-5 Months
+                    </div>
                   </div>
                 </div>
               </div>
@@ -188,7 +212,7 @@ const Skills = () => {
           </div>
         </motion.div>
 
-        {/* Skills Grid */}
+        {/* Salient Features Section */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -198,66 +222,142 @@ const Skills = () => {
         >
           <div className="text-center mb-12">
             <h3 className="text-3xl font-bold text-gray-800 mb-4 font-['Playfair_Display']">
-              Skills You'll{" "}
+              ⭐ Salient Features of{" "}
               <span className="relative inline-block">
-                <span className="text-amber-600">Master</span>
+                <span className="text-amber-600">the Program</span>
                 <span className="elegant-underline-thin"></span>
               </span>
             </h3>
             <p className="text-lg text-gray-600 font-['Inter'] max-w-2xl mx-auto">
-              Comprehensive training in advanced endodontic techniques that will
-              transform your clinical practice
+              Comprehensive features that make our program unique and valuable
+              for your professional development
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {SKILLS_COVERED.map((skill, index) => (
-              <motion.div
-                key={index}
-                className="group"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -8 }}
-              >
-                <Card className="p-6 h-full hover:shadow-xl transition-all duration-300 border-0 bg-white group-hover:bg-gradient-to-br group-hover:from-amber-50 group-hover:to-yellow-50">
-                  <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-gradient-to-br from-amber-400 to-amber-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg group-hover:scale-110 transition-transform duration-300">
-                      <span className="text-white font-bold text-lg">
-                        {index + 1}
-                      </span>
-                    </div>
-                    <div className="flex-1">
-                      <h5 className="font-bold text-gray-800 mb-2 font-['Playfair_Display'] text-lg group-hover:text-amber-700 transition-colors">
-                        {skill.name}
-                      </h5>
-                      <p className="text-gray-600 text-sm leading-relaxed mb-3 font-['Inter']">
-                        {skill.description}
-                      </p>
-                      <div className="flex items-center justify-between">
-                        <span
-                          className={`text-xs px-3 py-1 rounded-full font-medium font-['Inter'] ${
-                            skill.level === "Expert"
-                              ? "bg-red-100 text-red-700"
-                              : skill.level === "Advanced"
-                              ? "bg-amber-100 text-amber-700"
-                              : skill.level === "Premium"
-                              ? "bg-purple-100 text-purple-700"
-                              : "bg-blue-100 text-blue-700"
-                          }`}
-                        >
-                          {skill.level}
-                        </span>
-                        <span className="text-2xl group-hover:scale-125 transition-transform duration-300">
-                          {skill.icon}
-                        </span>
-                      </div>
-                    </div>
+          <div className="grid md:grid-cols-1 lg:grid-cols-3 gap-8">
+            {/* Track Record */}
+            <motion.div
+              className="group"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              viewport={{ once: true }}
+              whileHover={{ y: -8 }}
+            >
+              <Card className="p-8 h-full hover:shadow-xl transition-all duration-300 border-0 bg-white group-hover:bg-gradient-to-br group-hover:from-amber-50 group-hover:to-yellow-50">
+                <div className="text-center mb-6">
+                  <div className="w-16 h-16 bg-gradient-to-br from-amber-400 to-amber-600 rounded-xl mx-auto mb-4 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                    <span className="text-3xl">✅</span>
                   </div>
-                </Card>
-              </motion.div>
-            ))}
+                  <h4 className="text-xl font-bold text-gray-800 font-['Playfair_Display'] group-hover:text-amber-700 transition-colors">
+                    Track Record
+                  </h4>
+                </div>
+                <div className="space-y-4">
+                  <div className="flex items-start space-x-3">
+                    <span className="text-amber-500 text-lg mt-1">🎯</span>
+                    <span className="text-gray-700 font-['Inter'] leading-relaxed">
+                      <strong>10 years</strong> of experience in training both Undergraduate 
+                      and Postgraduate dental professionals
+                    </span>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <span className="text-amber-500 text-lg mt-1">🎓</span>
+                    <span className="text-gray-700 font-['Inter'] leading-relaxed">
+                      <strong>120+ graduates</strong> successfully completed training
+                    </span>
+                  </div>
+                </div>
+              </Card>
+            </motion.div>
+
+            {/* Clinical Exposure */}
+            <motion.div
+              className="group"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+              whileHover={{ y: -8 }}
+            >
+              <Card className="p-8 h-full hover:shadow-xl transition-all duration-300 border-0 bg-white group-hover:bg-gradient-to-br group-hover:from-blue-50 group-hover:to-indigo-50">
+                <div className="text-center mb-6">
+                  <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl mx-auto mb-4 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                    <span className="text-3xl">🔬</span>
+                  </div>
+                  <h4 className="text-xl font-bold text-gray-800 font-['Playfair_Display'] group-hover:text-blue-700 transition-colors">
+                    Clinical Exposure
+                  </h4>
+                </div>
+                <div className="space-y-4">
+                  <div className="flex items-start space-x-3">
+                    <span className="text-blue-500 text-lg mt-1">🏥</span>
+                    <span className="text-gray-700 font-['Inter'] leading-relaxed">
+                      <strong>Minimum 50 clinical cases</strong> assured per participant
+                    </span>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <span className="text-blue-500 text-lg mt-1">👥</span>
+                    <span className="text-gray-700 font-['Inter'] leading-relaxed">
+                      <strong>All patients provided</strong> by the academy
+                    </span>
+                  </div>
+                </div>
+              </Card>
+            </motion.div>
+
+            {/* Certification and Career Support */}
+            <motion.div
+              className="group"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              viewport={{ once: true }}
+              whileHover={{ y: -8 }}
+            >
+              <Card className="p-8 h-full hover:shadow-xl transition-all duration-300 border-0 bg-white group-hover:bg-gradient-to-br group-hover:from-green-50 group-hover:to-emerald-50">
+                <div className="text-center mb-6">
+                  <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl mx-auto mb-4 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                    <span className="text-3xl">🎓</span>
+                  </div>
+                  <h4 className="text-xl font-bold text-gray-800 font-['Playfair_Display'] group-hover:text-green-700 transition-colors">
+                    Certification & Career Support
+                  </h4>
+                </div>
+                <div className="space-y-3">
+                  <div className="flex items-start space-x-3">
+                    <span className="text-green-500 text-sm mt-1">📜</span>
+                    <span className="text-gray-700 font-['Inter'] text-sm leading-relaxed">
+                      Course Completion Certificate
+                    </span>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <span className="text-green-500 text-sm mt-1">📝</span>
+                    <span className="text-gray-700 font-['Inter'] text-sm leading-relaxed">
+                      Reference / Recommendation Letter for studies or jobs
+                    </span>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <span className="text-green-500 text-sm mt-1">🤝</span>
+                    <span className="text-gray-700 font-['Inter'] text-sm leading-relaxed">
+                      Lifelong personal mentorship after course completion
+                    </span>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <span className="text-green-500 text-sm mt-1">📚</span>
+                    <span className="text-gray-700 font-['Inter'] text-sm leading-relaxed">
+                      Study material provided
+                    </span>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <span className="text-green-500 text-sm mt-1">🏢</span>
+                    <span className="text-gray-700 font-['Inter'] text-sm leading-relaxed">
+                      Individual working station and locker facility
+                    </span>
+                  </div>
+                </div>
+              </Card>
+            </motion.div>
           </div>
         </motion.div>
 
@@ -280,12 +380,11 @@ const Skills = () => {
                   viewport={{ once: true }}
                 >
                   <h3 className="text-4xl md:text-5xl font-bold mb-6 font-['Playfair_Display']">
-                    Master Advanced Endodontics
+                    Ready to Begin Your Journey?
                   </h3>
                   <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-3xl mx-auto font-['Inter'] leading-relaxed">
-                    Don't settle for basic training. Learn with industry-leading
-                    techniques and equipment that will elevate your practice to
-                    new heights.
+                    Join our comprehensive endodontic training program and transform
+                    your clinical practice with expert guidance and hands-on experience.
                   </p>
                 </motion.div>
 
@@ -306,7 +405,7 @@ const Skills = () => {
                         element.scrollIntoView({ behavior: "smooth" });
                     }}
                   >
-                    Start Your Journey
+                    Apply Now
                   </Button>
                   <Button
                     size="lg"
@@ -322,23 +421,23 @@ const Skills = () => {
                 </motion.div>
 
                 <motion.div
-                  className="mt-8 flex justify-center items-center gap-8 text-white/80"
+                  className="mt-8 flex flex-wrap justify-center items-center gap-8 text-white/80"
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
                   transition={{ duration: 0.6, delay: 0.6 }}
                   viewport={{ once: true }}
                 >
                   <div className="flex items-center gap-2">
-                    <span className="text-2xl">🏆</span>
-                    <span className="font-['Inter']">Expert Training</span>
+                    <span className="text-2xl">📅</span>
+                    <span className="font-['Inter']">4-5 Months Training</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <span className="text-2xl">💎</span>
-                    <span className="font-['Inter']">Premium Materials</span>
+                    <span className="text-2xl">�</span>
+                    <span className="font-['Inter']">50+ Clinical Cases</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <span className="text-2xl">🎓</span>
-                    <span className="font-['Inter']">Certification</span>
+                    <span className="font-['Inter']">Lifelong Mentorship</span>
                   </div>
                 </motion.div>
               </div>

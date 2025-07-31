@@ -1,5 +1,12 @@
 import { motion } from "framer-motion";
-import { FaLinkedin, FaFacebook, FaInstagram, FaEnvelope, FaPhone, FaMapMarkerAlt } from "react-icons/fa";
+import {
+  FaLinkedin,
+  FaFacebook,
+  FaInstagram,
+  FaEnvelope,
+  FaPhone,
+  FaMapMarkerAlt,
+} from "react-icons/fa";
 import { CONTACT_INFO } from "../utils/constants";
 
 const Footer = () => {
@@ -13,11 +20,11 @@ const Footer = () => {
   };
 
   const quickLinks = [
-    { label: "About Us", id: "about" },
-    { label: "Course Modules", id: "courses" },
-    { label: "Skills & Materials", id: "skills" },
+    { label: "Home", id: "hero" },
+    { label: "About", id: "about" },
+    { label: "Courses", id: "courses" },
+    { label: "Program Details", id: "skills" },
     { label: "Testimonials", id: "testimonials" },
-    { label: "FAQ", id: "faq" },
     { label: "Contact", id: "contact" },
   ];
 
@@ -69,9 +76,24 @@ const Footer = () => {
             {/* Social Links */}
             <div className="flex space-x-4">
               {[
-                { icon: FaLinkedin, href: "https://linkedin.com/in/dr-anoop", label: "LinkedIn", color: "hover:bg-blue-600" },
-                { icon: FaFacebook, href: "https://facebook.com/endoedgeacademy", label: "Facebook", color: "hover:bg-blue-700" },
-                { icon: FaInstagram, href: "https://instagram.com/endoedgeacademy", label: "Instagram", color: "hover:bg-pink-600" }
+                {
+                  icon: FaLinkedin,
+                  href: "https://linkedin.com/in/dr-anoop",
+                  label: "LinkedIn",
+                  color: "hover:bg-blue-600",
+                },
+                {
+                  icon: FaFacebook,
+                  href: "https://facebook.com/endoedgeacademy",
+                  label: "Facebook",
+                  color: "hover:bg-blue-700",
+                },
+                {
+                  icon: FaInstagram,
+                  href: "https://instagram.com/endoedgeacademy",
+                  label: "Instagram",
+                  color: "hover:bg-pink-600",
+                },
               ].map((social, index) => (
                 <motion.a
                   key={social.label}
@@ -89,7 +111,7 @@ const Footer = () => {
                   <social.icon className="w-5 h-5 text-white group-hover:text-white transition-colors" />
                 </motion.a>
               ))}
-              
+
               {/* Contact Icons */}
               <motion.a
                 href={`mailto:${CONTACT_INFO.email}`}
@@ -103,7 +125,7 @@ const Footer = () => {
               >
                 <FaEnvelope className="w-4 h-4 text-white group-hover:text-white transition-colors" />
               </motion.a>
-              
+
               <motion.a
                 href={`tel:${CONTACT_INFO.phone}`}
                 className="w-10 h-10 bg-neutral-800 rounded-full flex items-center justify-center hover:bg-green-600 transition-all duration-300 group"
