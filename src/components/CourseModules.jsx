@@ -77,7 +77,7 @@ const CourseModules = () => {
           >
             {[
               { icon: "🎯", title: "4-5 Months", desc: "Intensive Training" },
-              { icon: "👥", title: "4-5 Students", desc: "Per Batch" },
+              { icon: "👥", title: "3-4 Students", desc: "Per Batch" },
               { icon: "🏆", title: "Real Patients", desc: "Live Experience" },
             ].map((highlight, index) => (
               <motion.div
@@ -758,7 +758,7 @@ const CourseModules = () => {
                     icon: "📅",
                   },
                   { number: "120+", label: "Graduates", icon: "🎓" },
-                  { number: "4-5", label: "Students per Batch", icon: "👥" },
+                  { number: "3-4", label: "Students per Batch", icon: "👥" },
                 ].map((stat, index) => (
                   <motion.div
                     key={index}

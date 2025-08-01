@@ -121,7 +121,7 @@ const Skills = () => {
                       <div className="flex items-center text-gray-700 font-['Inter']">
                         <span className="text-amber-500 mr-3 text-lg">📖</span>
                         <span className="font-semibold">Number of Modules:</span>
-                        <span className="ml-2 text-amber-700 font-bold">15</span>
+                        <span className="ml-2 text-amber-700 font-bold">3</span>
                       </div>
                     </div>
                   </div>

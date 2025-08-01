@@ -108,9 +108,22 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
-      // Simulate form submission
-      await new Promise((resolve) => setTimeout(resolve, 2000));
+      // TESTING MODE: Skip webhook submission
+      console.log("Form data (testing mode):", {
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        qualification: formData.qualification,
+        experience: formData.experience,
+        message: formData.message,
+        submittedAt: new Date().toISOString(),
+        source: "EndoEdge Academy Website",
+      });
 
+      // Simulate API delay for testing
+      await new Promise(resolve => setTimeout(resolve, 2000));
+
+      // Always succeed in testing mode
       setIsSubmitted(true);
       setFormData({
         name: "",
@@ -120,8 +133,59 @@ const Contact = () => {
         experience: "",
         message: "",
       });
+
+      // Scroll to the contact section top after a brief delay
+      setTimeout(() => {
+        const contactElement = document.getElementById("contact");
+        if (contactElement) {
+          contactElement.scrollIntoView({ 
+            behavior: "smooth", 
+            block: "start" 
+          });
+        }
+      }, 100);
+
+      // Uncomment below for production webhook submission:
+      /*
+      const response = await fetch(
+        "https://n8n.aakeeocrm.com/webhook-test/0e4e24c9-2700-443d-aa4a-8c78a4c31c2a",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: formData.name,
+            email: formData.email,
+            phone: formData.phone,
+            qualification: formData.qualification,
+            experience: formData.experience,
+            message: formData.message,
+            submittedAt: new Date().toISOString(),
+            source: "EndoEdge Academy Website",
+          }),
+        }
+      );
+
+      if (response.ok) {
+        setIsSubmitted(true);
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          qualification: "",
+          experience: "",
+          message: "",
+        });
+      } else {
+        throw new Error("Failed to submit form");
+      }
+      */
     } catch (error) {
       console.error("Error submitting form:", error);
+      alert(
+        "There was an error submitting your application. Please try again or contact us directly."
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -149,15 +213,14 @@ const Contact = () => {
     return (
       <section
         id="contact"
-        className="section-padding relative overflow-hidden scroll-margin-nav"
+        className="fixed inset-0 z-50 bg-gradient-to-br from-amber-50 via-white to-yellow-50 flex items-center justify-center overflow-auto"
       >
         {/* Background Elements */}
-        <div className="absolute inset-0 bg-gradient-to-br from-amber-50 via-white to-yellow-50"></div>
         <div className="absolute top-1/4 -right-1/4 w-96 h-96 bg-gradient-to-br from-amber-200/30 to-yellow-200/30 rounded-full blur-3xl"></div>
         <div className="absolute bottom-1/4 -left-1/4 w-96 h-96 bg-gradient-to-br from-amber-300/20 to-yellow-300/20 rounded-full blur-3xl"></div>
 
-        <div className="container-custom relative">
-          <div className="max-w-2xl mx-auto text-center">
+        <div className="container-custom relative w-full max-w-4xl px-6">
+          <div className="max-w-3xl mx-auto text-center">
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -168,19 +231,63 @@ const Contact = () => {
                 <Card className="relative p-12 bg-white/80 backdrop-blur-xl border border-white/30 shadow-2xl">
                   <div className="text-6xl mb-6">✅</div>
                   <h2 className="text-4xl font-bold text-gray-800 mb-4 font-['Playfair_Display']">
-                    Application Submitted Successfully!
+                    Thank You for Your Interest!
                   </h2>
-                  <p className="text-xl text-gray-600 mb-8 font-['Inter'] leading-relaxed">
-                    Thank you for your interest in EndoEdge Academy. We have
-                    received your application and will get back to you within 24
-                    hours with course details and next steps.
+                  <p className="text-xl text-gray-600 mb-6 font-['Inter'] leading-relaxed">
+                    We have successfully received your application for the
+                    EndoEdge Academy program.
                   </p>
-                  <Button
-                    onClick={() => setIsSubmitted(false)}
-                    className="bg-amber-600 hover:bg-amber-700 text-white font-['Inter'] font-semibold px-8 py-4 text-lg shadow-lg border-0 hover:shadow-xl transition-all duration-300"
-                  >
-                    Submit Another Application
-                  </Button>
+                  <div className="bg-gradient-to-r from-amber-50 to-yellow-50 p-6 rounded-2xl border border-amber-200 mb-8">
+                    <div className="flex items-center justify-center space-x-3 mb-3">
+                      <span className="text-2xl">📞</span>
+                      <h3 className="text-xl font-bold text-amber-800 font-['Playfair_Display']">
+                        What Happens Next?
+                      </h3>
+                    </div>
+                    <div className="space-y-3 text-amber-700 font-['Inter']">
+                      <div className="flex items-start space-x-3">
+                        <span className="text-amber-600 font-bold mt-1">
+                          1.
+                        </span>
+                        <span>
+                          Our admissions team will review your application
+                          within <strong>24 hours</strong>
+                        </span>
+                      </div>
+                      <div className="flex items-start space-x-3">
+                        <span className="text-amber-600 font-bold mt-1">
+                          2.
+                        </span>
+                        <span>
+                          We'll call you back to discuss program details and
+                          answer your questions
+                        </span>
+                      </div>
+                      <div className="flex items-start space-x-3">
+                        <span className="text-amber-600 font-bold mt-1">
+                          3.
+                        </span>
+                        <span>
+                          If selected, we'll guide you through the enrollment
+                          process
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex justify-center">
+                    <Button
+                      className="bg-blue-600 hover:bg-blue-700 text-white font-['Inter'] font-semibold px-10 py-4 text-lg shadow-lg border-0 hover:shadow-xl transition-all duration-300"
+                      onClick={() => {
+                        const element = document.getElementById("hero");
+                        if (element) {
+                          setIsSubmitted(false);
+                          element.scrollIntoView({ behavior: "smooth" });
+                        }
+                      }}
+                    >
+                      🏠 Go To Home
+                    </Button>
+                  </div>
                 </Card>
               </div>
             </motion.div>

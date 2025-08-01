@@ -192,7 +192,7 @@ const Testimonials = () => {
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
-                number: "500+",
+                number: "120+",
                 label: "Successful Graduates",
                 description: "Dental professionals trained",
                 icon: "🎓",
